@@ -88,18 +88,29 @@ class Color
             return true;
         }
     }
+
+    public static function random(): self
+    {
+        return new self(rand(0, 255), rand(0, 255), rand(0, 255));
+    }
 }
 
 
-$color = new Color(200, 200, 200);
+//$color = new Color(200, 200, 200);
+//
+//$mixedColor = $color->mix(new Color(100, 100, 100));
 
-$mixedColor = $color->mix(new Color(100, 100, 100));
+$color = Color::random();
+
+var_dump($color);
+
+$mixedColor = $color->mix(Color::random());
 
 $mixedColor->getRed(); // 150
 $mixedColor->getGreen(); // 150
 $mixedColor->getBlue(); // 150
 
-//var_dump($mixedColor);
+var_dump($mixedColor);
 
 if (!$color->equals($mixedColor)) {
     echo 'Цвета НЕ равны';
